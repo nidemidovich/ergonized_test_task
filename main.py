@@ -14,7 +14,7 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 
-def registration(token, proxy=None) -> str:
+def registration(api_token, proxy=None) -> str:
     site = 'https://discord.com/register'
     sitekey = '4c672d35-0701-42b2-88c3-78380b0db560'
 
@@ -27,7 +27,7 @@ def registration(token, proxy=None) -> str:
     logging.info('The credentials has been generated.')
     
     logging.info('Solving the captcha...')
-    captcha_key = solve_captcha(site, sitekey, token, proxy=proxy_for_api)
+    captcha_key = solve_captcha(site, sitekey, api_token, proxy=proxy_for_api)
     logging.info('The captcha has been solved.')
 
     data = {
@@ -124,5 +124,5 @@ def solve_captcha(site, sitekey, token, proxy=None) -> str:
 
 
 if __name__ == '__main__':
-    token = os.getenv('API_TOKEN')
-    registration(token)
+    api_token = os.getenv('API_TOKEN')
+    registration(api_token)
