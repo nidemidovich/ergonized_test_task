@@ -14,10 +14,9 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 
-def registration(proxy=None) -> str:
+def registration(token, proxy=None) -> str:
     site = 'https://discord.com/register'
     sitekey = '4c672d35-0701-42b2-88c3-78380b0db560'
-    token = os.getenv('API_TOKEN')
 
     proxy_for_api = None
     if proxy:
@@ -125,5 +124,5 @@ def solve_captcha(site, sitekey, token, proxy=None) -> str:
 
 
 if __name__ == '__main__':
-    proxy = {'http': 'http://37.53.83.237:8080'}
-    registration()
+    token = os.getenv('API_TOKEN')
+    registration(token)
